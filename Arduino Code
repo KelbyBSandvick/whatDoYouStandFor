@@ -1,0 +1,41 @@
+int led1 = A3;  
+int led2 = A5;
+int onSwitch = A4;
+int switchState;
+
+void setup() {
+  //LEDs Init
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+
+
+  //Switch Init 
+  pinMode(onSwitch, INPUT_PULLUP);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  //read the switch state
+  switchState = digitalRead(onSwitch);
+  
+  //check to see if switch is on
+  if (switchState == LOW) {
+
+    //if switch on, turn on LEDs
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, HIGH);
+
+    
+    Serial.println("LEDs are on");
+  }
+  else {
+
+    // if not on, turn off LEDs
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+
+    
+    Serial.println("LEDs are off");
+  }
+}
